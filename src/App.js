@@ -12,7 +12,10 @@ export default function App() {
 
     const newEntry = { email: email, password: password };
     setAllEntry([...allEntry, newEntry]);
-    // console.log(allEntry);
+    console.log(allEntry);
+
+    setEmail("");
+    setPassword("");
   };
 
   return (
