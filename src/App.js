@@ -10,12 +10,17 @@ export default function App() {
   const submitForm = (e) => {
     e.preventDefault();
 
-    const newEntry = { email: email, password: password };
-    setAllEntry([...allEntry, newEntry]);
-    console.log(allEntry);
+    if (email && password) {
+      const newEntry = { id: new Date().getTime().toString(), email, password };
 
-    setEmail("");
-    setPassword("");
+      setAllEntry([...allEntry, newEntry]);
+      console.log(allEntry);
+
+      setEmail("");
+      setPassword("");
+    } else {
+      alert("Please fill the data");
+    }
   };
 
   return (
@@ -46,16 +51,17 @@ export default function App() {
           Login
         </button>
       </form>
-      {/* <div>
+      <div className="dataStyle">
         {allEntry.map((curElem) => {
+          const { id, email, password } = curElem;
           return (
-            <div>
+            <div className="dataStyle" key={curElem.id}>
               <p>{curElem.email}</p>
               <p>{curElem.password}</p>
             </div>
           );
         })}
-      </div> */}
+      </div>
     </div>
   );
 }
